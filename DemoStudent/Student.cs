@@ -23,6 +23,15 @@ namespace DemoStudent
             }
             else this.name = name;
         }
+
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                age = value;
+            }
+        }
         
         public Student()
         {
@@ -36,6 +45,9 @@ namespace DemoStudent
             this.name = name;
             this.age = age;
             this.gpa = gpa;
+
+            Random rnd = new Random();
+            int choice = rnd.Next(1, 4);
         }
     }
 }
