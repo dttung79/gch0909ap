@@ -11,20 +11,27 @@ namespace GameRSP
         static void Main(string[] args)
         {
             bool playing = true;
-            PrintWelcome();
+            string playerName = WelcomePlayer();
+            int score = 0;
+            int count = 0;
             while (playing)
             {
                 string playerChoice = PlayerChooseRSP();
                 string computerChoice = ComputerChooseRSP();
                 int result = Compare(playerChoice, computerChoice);
-                PrintResult(result);
+                score += UpdateScore(result);
+                PrintResult(result, playerName, score);
                 playing = PlayerChooseContinue();
+                count++;
             }
-            PrintGoodbye();
+            PrintGoodbye(playerName, score, count);
         }
-        static void PrintWelcome()
+        static string WelcomePlayer()
         {
             Console.WriteLine("Welcome to Rock, Scissors, Paper!");
+            Console.Write("Enter player name: ");
+            string playerName = Console.ReadLine();
+            return playerName;
         }
         static string PlayerChooseRSP()
         {
@@ -55,11 +62,12 @@ namespace GameRSP
             else if (playerChoice == "Paper" && computerChoice == "Rock") return WIN;
             else return LOSE;
         }
-        static void PrintResult(int result)
+        static void PrintResult(int result, string playerName, int score)
         {
             if (result == DRAW) Console.WriteLine("It's a draw!");
-            else if (result == WIN) Console.WriteLine("You win!");
-            else Console.WriteLine("You lose!");
+            else if (result == WIN) Console.WriteLine("{0} win!", playerName);
+            else Console.WriteLine("{0} lose!", playerName);
+            Console.WriteLine("Current {0} score: {1}", playerName, score);
         }
 
         static bool PlayerChooseContinue()
@@ -68,9 +76,16 @@ namespace GameRSP
             string answer = Console.ReadLine();
             return answer == "y";        
         }
-        static void PrintGoodbye()
+        static void PrintGoodbye(string playerName, int score, int count)
         {
-            Console.WriteLine("Thanks for playing!");
+            Console.WriteLine("Final score: {0} / {1} games", score, count);
+            Console.WriteLine("Thanks {0} for playing!", playerName);
+        }
+        static int UpdateScore(int result)
+        {
+            if (result == DRAW)     return  0;
+            else if (result == WIN) return  1;
+            else                    return -1;
         }
     }
 }
