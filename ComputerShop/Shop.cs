@@ -6,12 +6,9 @@ namespace ComputerShop
     public class Shop
     {
         private List<Product> products;
-        public Shop()
+        public Shop(List<Product> products)
         {
-            products = new List<Product>();
-            products.Add(new Product("Macbook pro M1", 1999, "8GB RAM, 256GB SSD, i7"));
-            products.Add(new Product("Alienware M1", 2599, "16GB RAM, 512GB SSD, i5"));
-            products.Add(new Product("Surface Pro", 1599, "8GB RAM, 128GB SSD, i5"));
+            this.products = products;
         }
 
         public void Run()
@@ -20,6 +17,7 @@ namespace ComputerShop
             {
                 PrintMenu();
                 int choice = GetUserChoice();
+                if (choice == 0) break;
                 PrintProduct(choice);
                 int numbers = GetProductNumbers();
                 PrintBill(choice, numbers);

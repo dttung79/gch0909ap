@@ -23,8 +23,7 @@ namespace ComputerShop
         public void PrintInfo()
         {
             // print product with 15 spaces, price with 5 spaces
-            Console.WriteLine("Product:       {0,15}, Price: ${1,5}", Name, Price);
-            Console.WriteLine("Configuration: {0}", Configuration);
+            Console.WriteLine("Product: {0,15}, Price: ${1,5}, Configuration {2, 20}", Name, Price, Configuration);
         }
     }
 }
