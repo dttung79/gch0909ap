@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ShapeProject
 {
@@ -6,8 +7,8 @@ namespace ShapeProject
     {
         static void Main(string[] args)
         {
-            ShapeProgram p = new ShapeProgram();
-            p.Run();
+            ShapeMenu menu = new ShapeMenu();
+            menu.Run();
         }
     }
 }

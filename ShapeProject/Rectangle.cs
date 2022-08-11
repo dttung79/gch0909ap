@@ -24,11 +24,11 @@ namespace ShapeProject
             Width = width;
             Height = height;
         }
-        public double Area()
+        public override double Area()
         {
             return Width * Height;
         }
-        public double Perimeter()
+        public override double Perimeter()
         {
             return 2 * (Width + Height);
         }

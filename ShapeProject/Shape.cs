@@ -26,13 +26,18 @@ namespace ShapeProject
             Name = name;
             type = "Shape";
         }
-        public double Area()
+        public virtual double Area()
         {
             return 0;
         }
-        public double Perimeter()
+        public virtual double Perimeter()
         {
             return 0;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("{0} {1}: A = {2}, P = {3}", type, name, Area(), Perimeter());
         }
     }
 }

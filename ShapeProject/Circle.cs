@@ -26,11 +26,11 @@ namespace ShapeProject
             Radius = radius;
         }
 
-        public double Area()
+        public override double Area()
         {
             return Math.PI * radius * radius;
         }
-        public double Perimeter()
+        public override double Perimeter()
         {
             return 2 * Math.PI * radius;
         }
