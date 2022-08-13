@@ -11,20 +11,15 @@ namespace DemoException
                 // declare 1 array a
                 int []a = {};
 
-                // enter n
-                Console.Write("Enter n: ");
-                int n = int.Parse(Console.ReadLine());
+                int n = GetInteger("Enter n: ");
                 a = new int[n];
 
                 for (int i = 0; i < n; i++)
                 {
-                    Console.Write("Enter a[{0}]: ", i);
-                    a[i] = int.Parse(Console.ReadLine());
+                    a[i] = GetInteger("Enter a[" + i + "]: ");
                 }
-                //enter k
-                Console.Write("Enter k: ");
-                int k = int.Parse(Console.ReadLine());
 
+                int k = GetInteger("Enter k: ");
                 int s = 0;
                 for (int i = 0; i < k; i++)
                 {
@@ -32,16 +27,33 @@ namespace DemoException
                 }
                 double avg = (double) s / k;
                 Console.WriteLine("Average: {0}", avg);
-            } catch (FormatException)
-            {
-                Console.WriteLine("Input is not a number!");
-            } catch (IndexOutOfRangeException)
+            } 
+            catch (IndexOutOfRangeException)
             {
                 Console.WriteLine("Number k is exceeds range of array!");
             } catch (DivideByZeroException)
             {
                 Console.WriteLine("When divide, k cannot be zero!");
             }
+        }
+        static int GetInteger(string message)
+        {
+            bool invalid = true;
+            int number = 0;
+            while (invalid)
+            {
+                Console.Write(message);
+                try 
+                {
+                    number = int.Parse(Console.ReadLine());
+                    invalid = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input! Must be integer!");
+                }
+            }
+            return number;
         }
     }
 }
