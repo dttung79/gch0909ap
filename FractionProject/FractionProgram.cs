@@ -74,6 +74,20 @@ namespace FractionProject
             Fraction f3 = f1.Add(f2);
             Console.WriteLine(f1 + " + " + f2 + " = " + f3);
         }
+        private DivideFraction()
+        {
+            Fraction f1 = GetFraction("Enter the first fraction: ");
+            Fraction f2 = GetFraction("Enter the second fraction: ");
+            try
+            {
+                Fraction f3 = f1.Divide(f2);
+                Console.WriteLine(f1 + " / " + f2 + " = " + f3);
+            }
+            catch (FractionException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
 
     }
 }
